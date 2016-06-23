@@ -10,8 +10,12 @@ var Car = (function () {
     };
     return Car;
 }());
-window.onload = function () {
-    var car = new Car('V8-TypeScript Rules');
-    car.start();
-    car.stop();
-};
+var Test = (function () {
+    function Test() {
+        this.num2 = 2;
+        this.num3 = 3;
+        this.num4 = this.num3 + 100;
+        this.str = this.num1 + 'some sting';
+    }
+    return Test;
+}());
