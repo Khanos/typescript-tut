@@ -1,8 +1,8 @@
-class Engine {
+class EngineA {
     constructor(public horsePower: number, public engineType: string) { }
 }
 
-class Cars {
+class CarA {
     private _engine: Engine;
 
     constructor(engine: Engine) {
@@ -24,8 +24,8 @@ class Cars {
 }
 
 window.onload = function () {
-    var engine = new Engine(300, 'V8');
-    var car = new Cars(engine);
+    var engine = new EngineA(300, 'V8');
+    var car = new CarA(engine);
     alert(car.engine.engineType);
     car.start();
 };

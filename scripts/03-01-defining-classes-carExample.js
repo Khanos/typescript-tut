@@ -1,15 +1,15 @@
-var Engine = (function () {
-    function Engine(horsePower, engineType) {
+var EngineA = (function () {
+    function EngineA(horsePower, engineType) {
         this.horsePower = horsePower;
         this.engineType = engineType;
     }
-    return Engine;
+    return EngineA;
 }());
-var Cars = (function () {
-    function Cars(engine) {
+var CarA = (function () {
+    function CarA(engine) {
         this.engine = engine;
     }
-    Object.defineProperty(Cars.prototype, "engine", {
+    Object.defineProperty(CarA.prototype, "engine", {
         get: function () {
             return this._engine;
         },
@@ -21,14 +21,14 @@ var Cars = (function () {
         enumerable: true,
         configurable: true
     });
-    Cars.prototype.start = function () {
+    CarA.prototype.start = function () {
         alert('Car engine started ' + this._engine.engineType);
     };
-    return Cars;
+    return CarA;
 }());
 window.onload = function () {
-    var engine = new Engine(300, 'V8');
-    var car = new Cars(engine);
+    var engine = new EngineA(300, 'V8');
+    var car = new CarA(engine);
     alert(car.engine.engineType);
     car.start();
 };
