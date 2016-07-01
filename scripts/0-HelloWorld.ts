@@ -23,7 +23,7 @@ class Test {
     num4 = this.num3 + 100;
     str = this.num1 + 'some sting';
     //nothappy: number = this.num2 + 'some string';
-    
+
 }
 
 // window.onload = function () {

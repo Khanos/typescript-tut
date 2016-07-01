@@ -10,7 +10,7 @@ module.exports = function(grunt) {
         files: ['./css/*.css'],
       },
       js: {
-        files: ['Gruntfile.js', 'app/**/*.js'],
+        files: ['Gruntfile.js', 'scripts/*.js'],
       },
       html: {
         files: ['index.html', './**/*.html'],

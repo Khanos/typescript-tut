@@ -1,9 +1,16 @@
+<<<<<<< Updated upstream
 // Compiled using typings@0.6.8
 // Source: https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/4de74cb527395c13ba20b438c3a7a419ad931f1c/knockout/knockout.d.ts
 // Type definitions for Knockout v3.2.0
 // Project: http://knockoutjs.com
 // Definitions by: Boris Yankov <https://github.com/borisyankov/>, Igor Oleinikov <https://github.com/Igorbek/>, Clément Bourgeois <https://github.com/moonpyk/>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
+=======
+﻿// Type definitions for Knockout v3.4.0
+// Project: http://knockoutjs.com
+// Definitions by: Boris Yankov <https://github.com/borisyankov/>, Igor Oleinikov <https://github.com/Igorbek/>, Clément Bourgeois <https://github.com/moonpyk/>, Matt Brooks <https://github.com/EnableSoftware>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+>>>>>>> Stashed changes
 
 
 interface KnockoutSubscribableFunctions<T> {
@@ -389,6 +396,20 @@ interface KnockoutTemplateEngine extends KnockoutNativeTemplateEngine {
     rewriteTemplate(template: any, rewriterCallback: Function, templateDocument: Document): void;
 }
 
+<<<<<<< Updated upstream
+=======
+//////////////////////////////////
+// tasks.js
+//////////////////////////////////
+
+interface KnockoutTasks {
+    scheduler: (callback: Function) => any;
+    schedule(task: Function): number;
+    cancel(handle: number): void;
+    runEarly(): void;
+}
+
+>>>>>>> Stashed changes
 /////////////////////////////////
 
 interface KnockoutStatic {
@@ -419,12 +440,21 @@ interface KnockoutStatic {
     observableArray: KnockoutObservableArrayStatic;
 
     contextFor(node: any): any;
+<<<<<<< Updated upstream
     isSubscribable(instance: any): boolean;
     toJSON(viewModel: any, replacer?: Function, space?: any): string;
     toJS(viewModel: any): any;
     isObservable(instance: any): boolean;
     isWriteableObservable(instance: any): boolean;
     isComputed(instance: any): boolean;
+=======
+    isSubscribable(instance: any): instance is KnockoutSubscribable<any>;
+    toJSON(viewModel: any, replacer?: Function, space?: any): string;
+    toJS(viewModel: any): any;
+    isObservable(instance: any): instance is KnockoutObservable<any>;
+    isWriteableObservable(instance: any): instance is KnockoutObservable<any>;
+    isComputed(instance: any): instance is KnockoutComputed<any>;
+>>>>>>> Stashed changes
     dataFor(node: any): any;
     removeNode(node: Element): void;
     cleanNode(node: Element): Element;
@@ -514,8 +544,31 @@ interface KnockoutStatic {
     renderTemplateForEach(template: any, arrayOrObservableArray: KnockoutObservable<any>, options: Object, targetNode: Node, parentBindingContext: KnockoutBindingContext): any;
 
     expressionRewriting: {
+<<<<<<< Updated upstream
         bindingRewriteValidators: any;
         parseObjectLiteral: { (objectLiteralString: string): any[] }
+=======
+        bindingRewriteValidators: any[];
+        twoWayBindings: any;
+        parseObjectLiteral: (objectLiteralString: string) => any[];
+        
+        /**
+        Internal, private KO utility for updating model properties from within bindings
+        property:            If the property being updated is (or might be) an observable, pass it here
+                             If it turns out to be a writable observable, it will be written to directly
+        allBindings:         An object with a get method to retrieve bindings in the current execution context.
+                             This will be searched for a '_ko_property_writers' property in case you're writing to a non-observable
+                             (See note below)
+        key:                 The key identifying the property to be written. Example: for { hasFocus: myValue }, write to 'myValue' by specifying the key 'hasFocus'
+        value:               The value to be written
+        checkIfDifferent:    If true, and if the property being written is a writable observable, the value will only be written if
+                             it is !== existing value on that writable observable
+                             
+        Note that if you need to write to the viewModel without an observable property,
+        you need to set ko.expressionRewriting.twoWayBindings[key] = true; *before* the binding evaluation.
+        */
+        writeValueToProperty: (property: KnockoutObservable<any> | any, allBindings: KnockoutAllBindingsAccessor, key: string, value: any, checkIfDifferent?: boolean) => void;
+>>>>>>> Stashed changes
     };
 
     /////////////////////////////////
@@ -537,6 +590,25 @@ interface KnockoutStatic {
     };
 
     components: KnockoutComponents;
+<<<<<<< Updated upstream
+=======
+    
+    /////////////////////////////////
+    // options.js
+    /////////////////////////////////
+    
+    options: {
+        deferUpdates: boolean,
+        
+        useOnlyNativeEvents: boolean
+    };
+    
+    /////////////////////////////////
+    // tasks.js
+    /////////////////////////////////
+    
+    tasks: KnockoutTasks;
+>>>>>>> Stashed changes
 }
 
 interface KnockoutBindingProvider {
@@ -555,7 +627,11 @@ interface KnockoutComputedContext {
 // refactored types into a namespace to reduce global pollution
 // and used Union Types to simplify overloads (requires TypeScript 1.4)
 //
+<<<<<<< Updated upstream
 declare module KnockoutComponentTypes {
+=======
+declare namespace KnockoutComponentTypes {
+>>>>>>> Stashed changes
 
     interface Config {
         viewModel?: ViewModelFunction | ViewModelSharedInstance | ViewModelFactoryFunction | AMDModule;
@@ -630,4 +706,8 @@ declare var ko: KnockoutStatic;
 
 declare module "knockout" {
 	export = ko;
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
